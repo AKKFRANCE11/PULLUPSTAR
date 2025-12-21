@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULLUPSTAR - Магазин одежды</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Jura', 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+            background: #ff6b00;
+            border-radius: 3px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+            background: #ff8533;
+        }
+
+        .payment-modal .modal-content {
+            overflow-y: hidden !important;
+        }
+
+        header {
+            background-color: #0a0a0a;
+            padding: 30px 0;
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            gap: 60px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo span {
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+            flex: 1;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: #ff6b00;
+        }
+
+        .language-switch {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 8px 16px;
+            border: 1px solid #ffffff;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-right: 20px;
+        }
+
+        .language-switch:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .cart-icon {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 12px 28px;
+            border: 1px solid #ffffff;
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cart-icon:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #ff6b00;
+            color: #0a0a0a;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            margin-top: 0;
+        }
+
+        .product-card {
+            background-color: transparent;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .product-card:hover .product-image {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            background-color: #1a1a1a;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-info {
+            padding: 30px 0;
+            text-align: left;
+        }
+
+        .product-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .product-price {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .price-rub {
+            font-size: 20px;
+            color: #ff6b00;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .price-usd {
+            font-size: 16px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.98);
+            z-index: 2000;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 1200px;
+            width: 90%;
+            background-color: #0a0a0a;
+            padding: 60px;
+            position: relative;
+            border: 1px solid #2a2a2a;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 32px;
+            color: #888;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: color 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: #ff6b00;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-image {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            background-color: #1a1a1a;
+        }
+
+        .thumbnail-images {
+            display: flex;
+            gap: 15px;
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #2a2a2a;
+            transition: all 0.3s;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #ff6b00;
+            opacity: 1;
+        }
+
+        .product-details-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .detail-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .detail-price {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            padding: 30px 0;
+            border-top: 1px solid #2a2a2a;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .add-to-cart-btn {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 18px 40px;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .description-section,
+        .specs-section {
+            margin-top: 0;
+            padding-top: 60px;
+            padding-bottom: 60px;
+            border-top: 1px solid #2a2a2a;
+            background-color: transparent;
+        }
+
+        .specs-section {
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .description-text {
+            line-height: 1.8;
+            color: #ccc;
+            font-size: 15px;
+        }
+
+        .specs-table {
+            width: 100%;
+        }
+
+        .spec-row {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            padding: 18px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .spec-label {
+            color: #666;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .spec-value {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .delivery-info {
+            background-color: transparent;
+            color: #ff6b00;
+            padding: 20px;
+            border: 1px solid #ff6b00;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 30px;
+            letter-spacing: 1px;
+        }
+
+        .cart-modal .modal-content {
+            max-width: 900px;
+        }
+
+        .cart-header {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cart-items {
+            margin-bottom: 40px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 30px;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cart-item-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-item-price {
+            color: #ff6b00;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .remove-item {
+            background-color: transparent;
+            color: #888;
+            padding: 10px 20px;
+            border: 1px solid #888;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .remove-item:hover {
+            background-color: #ff0000;
+            border-color: #ff0000;
+            color: #ffffff;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .checkout-btn {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 18px;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .checkout-btn:hover {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 18px;
+        }
+
+        .payment-modal .modal-content {
+            max-width: 650px;
+        }
+
+        .payment-header {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .payment-method {
+            background-color: transparent;
+            padding: 25px;
+            cursor: pointer;
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s;
+        }
+
+        .payment-method:hover {
+            border-color: #ff6b00;
+        }
+
+        .payment-method.selected {
+            border-color: #ff6b00;
+            background-color: #1a1a1a;
+        }
+
+        .payment-method-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .payment-method-logo {
+            height: 30px;
+            width: auto;
+        }
+
+        .payment-method-title {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 15px;
+            padding: 15px 0;
+            background-color: transparent;
+        }
+
+        .payment-method.selected .payment-details {
+            display: block;
+        }
+
+        .payment-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .payment-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            font-size: 14px;
+        }
+
+        .copy-btn {
+            background-color: transparent;
+            color: #ff6b00;
+            padding: 8px 16px;
+            border: 1px solid #ff6b00;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 12px;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn:hover {
+            background-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .continue-btn-inline {
+            background-color: transparent;
+            color: #ffffff;
+            padding: 14px;
+            border: 1px solid #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .continue-btn-inline:hover:not(:disabled) {
+            background-color: #ff6b00;
+            border-color: #ff6b00;
+            color: #0a0a0a;
+        }
+
+        .continue-btn-inline:disabled {
+            background-color: #2a2a2a;
+            border-color: #2a2a2a;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .timer-text {
+            text-align: center;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-modal .modal-content {
+            max-width: 600px;
+        }
+
+        .info-content {
+            padding: 20px 0;
+        }
+
+        .info-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .info-content a {
+            color: #ff6b00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .info-content a:hover {
+            color: #ff8533;
+        }
+
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 0 30px;
+                gap: 30px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+                gap: 15px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .modal-content {
+                padding: 40px 25px;
+            }
+
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 40px 20px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+
+            .cart-item {
+                grid-template-columns: 100px 1fr;
+            }
+
+            .remove-item {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showMainPage(); return false;">
+                <img src="https://i.postimg.cc/pXhX4G31/yavsc-Photoroom.png" alt="PULLUPSTAR">
+                <span>PULLUPSTAR</span>
+            </a>
+            <nav>
+                <a onclick="showInfoModal('about'); return false;" data-lang-ru="О БРЕНДЕ" data-lang-en="ABOUT">О БРЕНДЕ</a>
+                <a onclick="showInfoModal('delivery'); return false;" data-lang-ru="ДОСТАВКА" data-lang-en="DELIVERY">ДОСТАВКА</a>
+                <a onclick="showInfoModal('contacts'); return false;" data-lang-ru="КОНТАКТЫ" data-lang-en="CONTACTS">КОНТАКТЫ</a>
+            </nav>
+            <button class="language-switch" onclick="toggleLanguage()" id="langBtn">EN</button>
+            <button class="cart-icon" onclick="openCart()">
+                <span data-lang-ru="Корзина" data-lang-en="Cart">Корзина</span>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="container" id="mainPage">
+        <div class="page-title" data-lang-ru="Новое поступление" data-lang-en="New Arrivals">Новое поступление</div>
+        <div class="product-grid">
+            <div class="product-card" onclick="openProductDetail()">
+                <div class="product-image-wrapper">
+                    <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Зип-худи STAR" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-title" data-lang-ru="Зип-худи STAR" data-lang-en="STAR Zip Hoodie">Зип-худи STAR</div>
+                    <div class="product-price">
+                        <span class="price-rub">3 690 ₽</span>
+                        <span class="price-usd">49.99 $</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeProductDetail()">&times;</button>
+
+            <div class="product-detail">
+                <div class="product-images">
+                    <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Зип-худи STAR" class="main-image" id="mainImage">
+                    <div class="thumbnail-images">
+                        <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Фото 1" class="thumbnail active" onclick="changeImage(this)">
+                        <img src="https://i.postimg.cc/pTsLbg2C/photo-2025-12-22-00-52-07.jpg" alt="Фото 2" class="thumbnail" onclick="changeImage(this)">
+                    </div>
+                </div>
+
+                <div class="product-details-info">
+                    <h1 class="detail-title" data-lang-ru="Зип-худи STAR" data-lang-en="STAR Zip Hoodie">Зип-худи STAR</h1>
+
+                    <div class="detail-price">
+                        <span class="price-rub">3 690 ₽</span>
+                        <span class="price-usd">49.99 $</span>
+                    </div>
+
+                    <button class="add-to-cart-btn" onclick="addToCart()" data-lang-ru="Добавить в корзину" data-lang-en="Add to Cart">Добавить в корзину</button>
+
+                    <div class="delivery-info" data-lang-ru="Срок доставки: приблизительно 14 дней" data-lang-en="Delivery time: approximately 14 days">
+                        Срок доставки: приблизительно 14 дней
+                    </div>
+                </div>
+            </div>
+
+            <div class="description-section">
+                <h2 class="section-title" data-lang-ru="Описание" data-lang-en="Description">Описание</h2>
+                <p class="description-text" data-lang-ru="Тёплое худи оверсайз с капюшоном — идеальный выбор для комфортных повседневных образов. Эта трикотажная толстовка из хлопка создана для тех, кто ценит качество и уют. Мягкий начёс внутри делает модель особенно тёплой и приятной к телу, а спущенные рукава добавляют современный стиль и расслабленный силуэт. Худи оснащено удобными карманами, что делает его не только стильным, но и практичным. Отлично подойдёт на каждый день — для прогулок, учебы, отдыха или путешествий. Выбирая нашу толстовку, вы получаете идеальное сочетание тепла, комфорта и модного дизайна." data-lang-en="Warm oversized hoodie with a hood — the perfect choice for comfortable everyday looks. This cotton knitwear sweatshirt is created for those who value quality and comfort. The soft fleece inside makes the model especially warm and pleasant to the body, while dropped sleeves add a modern style and relaxed silhouette. The hoodie is equipped with convenient pockets, making it not only stylish but also practical. Perfect for everyday wear — for walks, study, leisure or travel. By choosing our sweatshirt, you get the perfect combination of warmth, comfort and fashionable design.">
+                    Тёплое худи оверсайз с капюшоном — идеальный выбор для комфортных повседневных образов.
+                    Эта трикотажная толстовка из хлопка создана для тех, кто ценит качество и уют.
+                    Мягкий начёс внутри делает модель особенно тёплой и приятной к телу, а спущенные рукава
+                    добавляют современный стиль и расслабленный силуэт. Худи оснащено удобными карманами,
+                    что делает его не только стильным, но и практичным. Отлично подойдёт на каждый день —
+                    для прогулок, учебы, отдыха или путешествий. Выбирая нашу толстовку, вы получаете
+                    идеальное сочетание тепла, комфорта и модного дизайна.
+                </p>
+            </div>
+
+            <div class="specs-section">
+                <h2 class="section-title" data-lang-ru="Характеристики" data-lang-en="Specifications">Характеристики</h2>
+                <div class="specs-table">
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Состав" data-lang-en="Material">Состав</div>
+                        <div class="spec-value" data-lang-ru="хлопок" data-lang-en="cotton">хлопок</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Цвет" data-lang-en="Color">Цвет</div>
+                        <div class="spec-value" data-lang-ru="черный" data-lang-en="black">черный</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Пол" data-lang-en="Gender">Пол</div>
+                        <div class="spec-value" data-lang-ru="Мужской" data-lang-en="Male">Мужской</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Размер на модели" data-lang-en="Model size">Размер на модели</div>
+                        <div class="spec-value">L</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Рост модели на фото" data-lang-en="Model height">Рост модели на фото</div>
+                        <div class="spec-value" data-lang-ru="188 см" data-lang-en="188 cm">188 см</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Утеплитель" data-lang-en="Insulation">Утеплитель</div>
+                        <div class="spec-value" data-lang-ru="флис" data-lang-en="fleece">флис</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Покрой" data-lang-en="Fit">Покрой</div>
+                        <div class="spec-value" data-lang-ru="оверсайз" data-lang-en="oversized">оверсайз</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Тип карманов" data-lang-en="Pocket type">Тип карманов</div>
+                        <div class="spec-value" data-lang-ru="кенгуру" data-lang-en="kangaroo">кенгуру</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Особенности модели" data-lang-en="Features">Особенности модели</div>
+                        <div class="spec-value" data-lang-ru="с начесом" data-lang-en="with fleece">с начесом</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Фактура материала" data-lang-en="Texture">Фактура материала</div>
+                        <div class="spec-value" data-lang-ru="трикотаж" data-lang-en="knitwear">трикотаж</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Уход за вещами" data-lang-en="Care instructions">Уход за вещами</div>
+                        <div class="spec-value" data-lang-ru="деликатная стирка; стирка при t не более 30°С" data-lang-en="delicate wash; wash at t no more than 30°C">деликатная стирка; стирка при t не более 30°С</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Комплектация" data-lang-en="Package">Комплектация</div>
+                        <div class="spec-value" data-lang-ru="худи оверсайз 1 шт" data-lang-en="oversized hoodie 1 pc">худи оверсайз 1 шт</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Страна производства" data-lang-en="Country of origin">Страна производства</div>
+                        <div class="spec-value" data-lang-ru="Россия" data-lang-en="Russia">Россия</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal cart-modal" id="cartModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeCart()">&times;</button>
+            <h2 class="cart-header" data-lang-ru="Корзина" data-lang-en="Shopping Cart">Корзина</h2>
+
+            <div id="cartContent">
+                <div class="empty-cart" data-lang-ru="Корзина пуста" data-lang-en="Cart is empty">Корзина пуста</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal payment-modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closePayment()">&times;</button>
+            <h2 class="payment-header" data-lang-ru="Выберите способ оплаты" data-lang-en="Choose payment method">Выберите способ оплаты</h2>
+
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPayment('sbp', this)">
+                    <div class="payment-method-header">
+                        <img src="https://thumb.tildacdn.com/tild6365-6562-4437-a465-306531386233/-/format/webp/4.png" alt="Юмани" class="payment-method-logo">
+                        <div class="payment-method-title" data-lang-ru="СБП" data-lang-en="SBP">СБП</div>
+                    </div>
+                    <div class="payment-details">
+                        <div class="timer-text" data-timer-sbp><span data-lang-ru="Кнопка станет активна через " data-lang-en="Button will be active in ">Кнопка станет активна через </span><span class="timer-value">15</span><span data-lang-ru=" секунд" data-lang-en=" seconds"> секунд</span></div>
+                        <div class="payment-info">
+                            <div class="payment-info-row">
+                                <span data-lang-ru="Номер телефона:" data-lang-en="Phone number:">Номер телефона:</span>
+                                <div>
+                                    <span id="sbpPhone">+77774581003</span>
+                                    <button class="copy-btn" onclick="copyText('sbpPhone', event)" data-lang-ru="Копировать" data-lang-en="Copy">Копировать</button>
+                                </div>
+                            </div>
+                            <div class="payment-info-row">
+                                <span data-lang-ru="Банк:" data-lang-en="Bank:">Банк:</span>
+                                <span data-lang-ru="Юмани" data-lang-en="Yoomoney">Юмани</span>
+                            </div>
+                        </div>
+                        <button class="continue-btn-inline" disabled data-btn-sbp onclick="processContinue('sbp', event)" data-lang-ru="Продолжить" data-lang-en="Continue">Продолжить</button>
+                    </div>
+                </div>
+
+                <div class="payment-method" onclick="selectPayment('crypto', this)">
+                    <div class="payment-method-title" data-lang-ru="Crypto" data-lang-en="Crypto">Crypto</div>
+                    <div class="payment-details">
+                        <div class="timer-text" data-timer-crypto><span data-lang-ru="Кнопка станет активна через " data-lang-en="Button will be active in ">Кнопка станет активна через </span><span class="timer-value">15</span><span data-lang-ru=" секунд" data-lang-en=" seconds"> секунд</span></div>
+                        <p style="color: #888; margin-top: 10px; margin-bottom: 15px;" data-lang-ru="Вы будете перенаправлены в Telegram" data-lang-en="You will be redirected to Telegram">Вы будете перенаправлены в Telegram</p>
+                        <button class="continue-btn-inline" disabled data-btn-crypto onclick="processContinue('crypto', event)" data-lang-ru="Продолжить" data-lang-en="Continue">Продолжить</button>
+                    </div>
+                </div>
+
+                <div class="payment-method" onclick="selectPayment('card', this)">
+                    <div class="payment-method-header">
+                        <img src="https://jobtrue.ru/wp-content/uploads/599297.png" alt="Jusan Bank" class="payment-method-logo">
+                        <div class="payment-method-title" data-lang-ru="Зарубежная карта" data-lang-en="Foreign card">Зарубежная карта</div>
+                    </div>
+                    <div class="payment-details">
+                        <div class="timer-text" data-timer-card><span data-lang-ru="Кнопка станет активна через " data-lang-en="Button will be active in ">Кнопка станет активна через </span><span class="timer-value">15</span><span data-lang-ru=" секунд" data-lang-en=" seconds"> секунд</span></div>
+                        <div class="payment-info">
+                            <div class="payment-info-row">
+                                <span data-lang-ru="Номер карты:" data-lang-en="Card number:">Номер карты:</span>
+                                <div>
+                                    <span id="cardNumber">5395459847649597</span>
+                                    <button class="copy-btn" onclick="copyText('cardNumber', event)" data-lang-ru="Копировать" data-lang-en="Copy">Копировать</button>
+                                </div>
+                            </div>
+                            <div class="payment-info-row">
+                                <span data-lang-ru="Банк:" data-lang-en="Bank:">Банк:</span>
+                                <span>Jusan Bank</span>
+                            </div>
+                        </div>
+                        <button class="continue-btn-inline" disabled data-btn-card onclick="processContinue('card', event)" data-lang-ru="Продолжить" data-lang-en="Continue">Продолжить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal info-modal" id="infoModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeInfoModal()">&times;</button>
+            <h2 class="cart-header" id="infoTitle"></h2>
+            <div class="info-content" id="infoContent"></div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let currentLanguage = 'ru';
+        let timerIntervals = {};
+
+        const translations = {
+            ru: {
+                aboutTitle: 'О БРЕНДЕ',
+                aboutContent: 'PULLUPSTAR — это бренд уличной одежды, который сочетает в себе стиль, комфорт и качество. Мы создаем вещи для тех, кто ценит индивидуальность и не боится выражать себя.',
+                deliveryTitle: 'ДОСТАВКА',
+                deliveryContent: 'Средний срок доставки составляет 14 дней. Доставка осуществляется по всей России и за рубеж. Стоимость доставки рассчитывается индивидуально.',
+                contactsTitle: 'КОНТАКТЫ',
+                contactsContent: '<p>Для связи с нами используйте следующие контакты:</p><p>Telegram: <a href="https://t.me/okswis" target="_blank">@okswis</a></p><p>Email: <a href="mailto:ssilincer@gmail.com">ssilincer@gmail.com</a></p>',
+                addedToCart: 'Товар добавлен в корзину!',
+                alreadyInCart: 'Товар уже в корзине!',
+                copied: 'Скопировано: '
+            },
+            en: {
+                aboutTitle: 'ABOUT',
+                aboutContent: 'PULLUPSTAR is a streetwear brand that combines style, comfort and quality. We create items for those who value individuality and are not afraid to express themselves.',
+                deliveryTitle: 'DELIVERY',
+                deliveryContent: 'Average delivery time is 14 days. We deliver throughout Russia and abroad. Delivery cost is calculated individually.',
+                contactsTitle: 'CONTACTS',
+                contactsContent: '<p>To contact us, use the following:</p><p>Telegram: <a href="https://t.me/okswis" target="_blank">@okswis</a></p><p>Email: <a href="mailto:ssilincer@gmail.com">ssilincer@gmail.com</a></p>',
+                addedToCart: 'Item added to cart!',
+                alreadyInCart: 'Item already in cart!',
+                copied: 'Copied: '
+            }
+        };
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'ru' ? 'en' : 'ru';
+            document.getElementById('langBtn').textContent = currentLanguage === 'ru' ? 'EN' : 'RU';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-lang-ru]');
+            elements.forEach(el => {
+                const text = currentLanguage === 'ru' ? el.getAttribute('data-lang-ru') : el.getAttribute('data-lang-en');
+                if (el.tagName === 'INPUT' || el.tagName === 'BUTTON') {
+                    if (el.hasAttribute('placeholder')) {
+                        el.placeholder = text;
+                    } else {
+                        el.textContent = text;
+                    }
+                } else {
+                    el.textContent = text;
+                }
+            });
+        }
+
+        function updateCartCount() {
+            document.getElementById('cartCount').textContent = cart.length;
+        }
+
+        function openProductDetail() {
+            document.getElementById('productModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductDetail() {
+            document.getElementById('productModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(thumbnail) {
+            document.getElementById('mainImage').src = thumbnail.src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        function addToCart() {
+            const product = {
+                id: 1,
+                name: currentLanguage === 'ru' ? 'Зип-худи STAR' : 'STAR Zip Hoodie',
+                price: '3 690 ₽',
+                priceUsd: '49.99 $',
+                image: 'https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg'
+            };
+
+            const existingProduct = cart.find(item => item.id === product.id);
+            if (!existingProduct) {
+                cart.push(product);
+                updateCartCount();
+                alert(translations[currentLanguage].addedToCart);
+                closeProductDetail();
+            } else {
+                alert(translations[currentLanguage].alreadyInCart);
+            }
+        }
+
+        function openCart() {
+            const cartContent = document.getElementById('cartContent');
+
+            if (cart.length === 0) {
+                const emptyText = currentLanguage === 'ru' ? 'Корзина пуста' : 'Cart is empty';
+                cartContent.innerHTML = `<div class="empty-cart">${emptyText}</div>`;
+            } else {
+                let html = '<div class="cart-items">';
+                cart.forEach((item, index) => {
+                    const removeText = currentLanguage === 'ru' ? 'Удалить' : 'Remove';
+                    html += `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-info">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${item.price} / ${item.priceUsd}</div>
+                            </div>
+                            <button class="remove-item" onclick="removeFromCart(${index})">${removeText}</button>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+
+                const totalText = currentLanguage === 'ru' ? 'Итого:' : 'Total:';
+                const deliveryText = currentLanguage === 'ru' ? 'Срок доставки: приблизительно 14 дней' : 'Delivery time: approximately 14 days';
+                const checkoutText = currentLanguage === 'ru' ? 'Оформить заказ' : 'Checkout';
+
+                html += `
+                    <div class="cart-total">
+                        <span>${totalText}</span>
+                        <span class="price-rub">3 690 ₽</span>
+                    </div>
+                    <div class="delivery-info" style="margin-bottom: 20px;">
+                        ${deliveryText}
+                    </div>
+                    <button class="checkout-btn" onclick="openPayment()">${checkoutText}</button>
+                `;
+
+                cartContent.innerHTML = html;
+            }
+
+            document.getElementById('cartModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartCount();
+            openCart();
+        }
+
+        function openPayment() {
+            closeCart();
+            document.getElementById('paymentModal').classList.add('active');
+
+            document.querySelectorAll('.payment-method').forEach(method => {
+                method.classList.remove('selected');
+            });
+
+            Object.keys(timerIntervals).forEach(key => {
+                if (timerIntervals[key]) {
+                    clearInterval(timerIntervals[key]);
+                }
+            });
+
+            timerIntervals = {};
+
+            document.querySelectorAll('.timer-text').forEach(timer => {
+                timer.style.display = 'block';
+                const timerValue = timer.querySelector('.timer-value');
+                if (timerValue) {
+                    timerValue.textContent = '15';
+                }
+            });
+
+            document.querySelectorAll('.continue-btn-inline').forEach(btn => {
+                btn.disabled = true;
+            });
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+
+            Object.keys(timerIntervals).forEach(key => {
+                if (timerIntervals[key]) {
+                    clearInterval(timerIntervals[key]);
+                }
+            });
+        }
+
+        function selectPayment(method, element) {
+            document.querySelectorAll('.payment-method').forEach(m => {
+                m.classList.remove('selected');
+            });
+
+            element.classList.add('selected');
+
+            const timerText = element.querySelector('.timer-text');
+            const continueBtn = element.querySelector('.continue-btn-inline');
+            const timerValue = element.querySelector('.timer-value');
+
+            if (timerIntervals[method]) {
+                clearInterval(timerIntervals[method]);
+            }
+
+            let timeLeft = 15;
+            timerValue.textContent = timeLeft;
+            timerText.style.display = 'block';
+
+            timerIntervals[method] = setInterval(() => {
+                timeLeft--;
+                timerValue.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerIntervals[method]);
+                    timerText.style.display = 'none';
+                    continueBtn.disabled = false;
+                }
+            }, 1000);
+        }
+
+        function copyText(elementId, event) {
+            event.stopPropagation();
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert(translations[currentLanguage].copied + text);
+            });
+        }
+
+        function processContinue(method, event) {
+            event.stopPropagation();
+
+            if (method === 'crypto') {
+                window.open('https://t.me/send?start=IVlDWy2EgSdf', '_blank');
+                setTimeout(() => {
+                    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScho96wfcb2M5NJBBaOOp_eXNWvnR5Rq5gs0yq16_6QBEjPJQ/viewform';
+                }, 1000);
+            } else {
+                window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScho96wfcb2M5NJBBaOOp_eXNWvnR5Rq5gs0yq16_6QBEjPJQ/viewform';
+            }
+        }
+
+        function showInfoModal(type) {
+            const modal = document.getElementById('infoModal');
+            const title = document.getElementById('infoTitle');
+            const content = document.getElementById('infoContent');
+
+            if (type === 'about') {
+                title.textContent = translations[currentLanguage].aboutTitle;
+                content.innerHTML = `<p>${translations[currentLanguage].aboutContent}</p>`;
+            } else if (type === 'delivery') {
+                title.textContent = translations[currentLanguage].deliveryTitle;
+                content.innerHTML = `<p>${translations[currentLanguage].deliveryContent}</p>`;
+            } else if (type === 'contacts') {
+                title.textContent = translations[currentLanguage].contactsTitle;
+                content.innerHTML = translations[currentLanguage].contactsContent;
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function showMainPage() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('active');
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                showMainPage();
+            }
+        });
+    </script>
+</body>
+</html>
