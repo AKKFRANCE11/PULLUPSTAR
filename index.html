@@ -792,7 +792,7 @@
     <div class="container" id="mainPage">
         <div class="page-title" data-lang-ru="Новое поступление" data-lang-en="New Arrivals">Новое поступление</div>
         <div class="product-grid">
-            <div class="product-card" onclick="openProductDetail()">
+            <div class="product-card" onclick="openProductDetail(1)">
                 <div class="product-image-wrapper">
                     <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Зип-худи STAR" class="product-image">
                 </div>
@@ -804,32 +804,39 @@
                     </div>
                 </div>
             </div>
+            <div class="product-card" onclick="openProductDetail(2)">
+                <div class="product-image-wrapper">
+                    <img src="https://i.postimg.cc/K8Yw5znS/fgddfgv.jpg" alt="Зип-худи USSR" class="product-image">
+                </div>
+                <div class="product-info">
+                    <div class="product-title" data-lang-ru="Зип-худи USSR" data-lang-en="USSR Zip Hoodie">Зип-худи USSR</div>
+                    <div class="product-price">
+                        <span class="price-rub">5 500 ₽</span>
+                        <span class="price-usd">74.99 $</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="modal" id="productModal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeProductDetail()">&times;</button>
-
             <div class="product-detail">
                 <div class="product-images">
-                    <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Зип-худи STAR" class="main-image" id="mainImage">
+                    <img src="https://i.postimg.cc/K8Yw5znS/fgddfgv.jpg" alt="Зип-худи USSR" class="main-image" id="mainImage">
                     <div class="thumbnail-images">
-                        <img src="https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg" alt="Фото 1" class="thumbnail active" onclick="changeImage(this)">
-                        <img src="https://i.postimg.cc/pTsLbg2C/photo-2025-12-22-00-52-07.jpg" alt="Фото 2" class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://i.postimg.cc/K8Yw5znS/fgddfgv.jpg" alt="Фото 1" class="thumbnail active" onclick="changeImage(this)">
+                        <img src="https://i.postimg.cc/zv5PHXJP/uayvm.jpg" alt="Фото 2" class="thumbnail" onclick="changeImage(this)">
                     </div>
                 </div>
-
                 <div class="product-details-info">
-                    <h1 class="detail-title" data-lang-ru="Зип-худи STAR" data-lang-en="STAR Zip Hoodie">Зип-худи STAR</h1>
-
+                    <h1 class="detail-title">Зип-худи USSR</h1>
                     <div class="detail-price">
-                        <span class="price-rub">3 690 ₽</span>
-                        <span class="price-usd">49.99 $</span>
+                        <span class="price-rub">5 500 ₽</span>
+                        <span class="price-usd">74.99 $</span>
                     </div>
-
                     <button class="add-to-cart-btn" onclick="addToCart()" data-lang-ru="Добавить в корзину" data-lang-en="Add to Cart">Добавить в корзину</button>
-
                     <div class="delivery-info" data-lang-ru="Срок доставки: приблизительно 14 дней" data-lang-en="Delivery time: approximately 14 days">
                         Срок доставки: приблизительно 14 дней
                     </div>
@@ -838,14 +845,8 @@
 
             <div class="description-section">
                 <h2 class="section-title" data-lang-ru="Описание" data-lang-en="Description">Описание</h2>
-                <p class="description-text" data-lang-ru="Тёплое худи оверсайз с капюшоном — идеальный выбор для комфортных повседневных образов. Эта трикотажная толстовка из хлопка создана для тех, кто ценит качество и уют. Мягкий начёс внутри делает модель особенно тёплой и приятной к телу, а спущенные рукава добавляют современный стиль и расслабленный силуэт. Худи оснащено удобными карманами, что делает его не только стильным, но и практичным. Отлично подойдёт на каждый день — для прогулок, учебы, отдыха или путешествий. Выбирая нашу толстовку, вы получаете идеальное сочетание тепла, комфорта и модного дизайна." data-lang-en="Warm oversized hoodie with a hood — the perfect choice for comfortable everyday looks. This cotton knitwear sweatshirt is created for those who value quality and comfort. The soft fleece inside makes the model especially warm and pleasant to the body, while dropped sleeves add a modern style and relaxed silhouette. The hoodie is equipped with convenient pockets, making it not only stylish but also practical. Perfect for everyday wear — for walks, study, leisure or travel. By choosing our sweatshirt, you get the perfect combination of warmth, comfort and fashionable design.">
-                    Тёплое худи оверсайз с капюшоном — идеальный выбор для комфортных повседневных образов.
-                    Эта трикотажная толстовка из хлопка создана для тех, кто ценит качество и уют.
-                    Мягкий начёс внутри делает модель особенно тёплой и приятной к телу, а спущенные рукава
-                    добавляют современный стиль и расслабленный силуэт. Худи оснащено удобными карманами,
-                    что делает его не только стильным, но и практичным. Отлично подойдёт на каждый день —
-                    для прогулок, учебы, отдыха или путешествий. Выбирая нашу толстовку, вы получаете
-                    идеальное сочетание тепла, комфорта и модного дизайна.
+                <p class="description-text" data-lang-ru="Стильный зип-худи USSR с укороченным покроем — идеальный выбор для создания модных городских образов. Эта модель выполнена из качественного материала с оптимальным соотношением хлопка и полиэстера, что обеспечивает комфорт и долговечность. Худи на молнии с капюшоном отлично подходит для межсезонья и прохладных дней. Накладные карманы добавляют практичности, а унисекс дизайн делает модель универсальной. Глубокий черный цвет легко комбинируется с любыми вещами гардероба." data-lang-en="Stylish USSR zip hoodie with a shortened cut — the perfect choice for creating fashionable urban looks. This model is made of quality material with an optimal ratio of cotton and polyester, which provides comfort and durability. The zip hoodie with hood is perfect for the off-season and cool days. Patch pockets add practicality, and the unisex design makes the model universal. Deep black color is easily combined with any wardrobe items.">
+                    Стильный зип-худи USSR с укороченным покроем — идеальный выбор для создания модных городских образов. Эта модель выполнена из качественного материала с оптимальным соотношением хлопка и полиэстера, что обеспечивает комфорт и долговечность. Худи на молнии с капюшоном отлично подходит для межсезонья и прохладных дней. Накладные карманы добавляют практичности, а унисекс дизайн делает модель универсальной. Глубокий черный цвет легко комбинируется с любыми вещами гардероба.
                 </p>
             </div>
 
@@ -854,11 +855,11 @@
                 <div class="specs-table">
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Состав" data-lang-en="Material">Состав</div>
-                        <div class="spec-value" data-lang-ru="хлопок" data-lang-en="cotton">хлопок</div>
+                        <div class="spec-value" data-lang-ru="Хлопок-65%; Полиэстер-35%" data-lang-en="Cotton-65%; Polyester-35%">Хлопок-65%; Полиэстер-35%</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Цвет" data-lang-en="Color">Цвет</div>
-                        <div class="spec-value" data-lang-ru="черный" data-lang-en="black">черный</div>
+                        <div class="spec-value" data-lang-ru="черный; глубокий черный" data-lang-en="black; deep black">черный; глубокий черный</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Пол" data-lang-en="Gender">Пол</div>
@@ -866,39 +867,43 @@
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Размер на модели" data-lang-en="Model size">Размер на модели</div>
-                        <div class="spec-value">L</div>
+                        <div class="spec-value">52</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Рост модели на фото" data-lang-en="Model height">Рост модели на фото</div>
-                        <div class="spec-value" data-lang-ru="188 см" data-lang-en="188 cm">188 см</div>
+                        <div class="spec-value" data-lang-ru="179 см" data-lang-en="179 cm">179 см</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Утеплитель" data-lang-en="Insulation">Утеплитель</div>
-                        <div class="spec-value" data-lang-ru="флис" data-lang-en="fleece">флис</div>
+                        <div class="spec-value" data-lang-ru="без утеплителя" data-lang-en="without insulation">без утеплителя</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Покрой" data-lang-en="Fit">Покрой</div>
-                        <div class="spec-value" data-lang-ru="оверсайз" data-lang-en="oversized">оверсайз</div>
+                        <div class="spec-value" data-lang-ru="укороченный" data-lang-en="shortened">укороченный</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Тип карманов" data-lang-en="Pocket type">Тип карманов</div>
-                        <div class="spec-value" data-lang-ru="кенгуру" data-lang-en="kangaroo">кенгуру</div>
+                        <div class="spec-value" data-lang-ru="накладные" data-lang-en="patch">накладные</div>
+                    </div>
+                    <div class="spec-row">
+                        <div class="spec-label" data-lang-ru="Декоративные элементы" data-lang-en="Decorative elements">Декоративные элементы</div>
+                        <div class="spec-value" data-lang-ru="молния; капюшон" data-lang-en="zipper; hood">молния; капюшон</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Особенности модели" data-lang-en="Features">Особенности модели</div>
-                        <div class="spec-value" data-lang-ru="с начесом" data-lang-en="with fleece">с начесом</div>
+                        <div class="spec-value" data-lang-ru="унисекс; без начеса" data-lang-en="unisex; without fleece">унисекс; без начеса</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Фактура материала" data-lang-en="Texture">Фактура материала</div>
-                        <div class="spec-value" data-lang-ru="трикотаж" data-lang-en="knitwear">трикотаж</div>
+                        <div class="spec-value" data-lang-ru="плотная" data-lang-en="dense">плотная</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Уход за вещами" data-lang-en="Care instructions">Уход за вещами</div>
-                        <div class="spec-value" data-lang-ru="деликатная стирка; стирка при t не более 30°С" data-lang-en="delicate wash; wash at t no more than 30°C">деликатная стирка; стирка при t не более 30°С</div>
+                        <div class="spec-value" data-lang-ru="деликатная стирка" data-lang-en="delicate wash">деликатная стирка</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Комплектация" data-lang-en="Package">Комплектация</div>
-                        <div class="spec-value" data-lang-ru="худи оверсайз 1 шт" data-lang-en="oversized hoodie 1 pc">худи оверсайз 1 шт</div>
+                        <div class="spec-value" data-lang-ru="Худи на молнии - 1шт." data-lang-en="Zip hoodie - 1 pc.">Худи на молнии - 1шт.</div>
                     </div>
                     <div class="spec-row">
                         <div class="spec-label" data-lang-ru="Страна производства" data-lang-en="Country of origin">Страна производства</div>
@@ -913,7 +918,6 @@
         <div class="modal-content">
             <button class="close-modal" onclick="closeCart()">&times;</button>
             <h2 class="cart-header" data-lang-ru="Корзина" data-lang-en="Shopping Cart">Корзина</h2>
-
             <div id="cartContent">
                 <div class="empty-cart" data-lang-ru="Корзина пуста" data-lang-en="Cart is empty">Корзина пуста</div>
             </div>
@@ -924,7 +928,6 @@
         <div class="modal-content">
             <button class="close-modal" onclick="closePayment()">&times;</button>
             <h2 class="payment-header" data-lang-ru="Выберите способ оплаты" data-lang-en="Choose payment method">Выберите способ оплаты</h2>
-
             <div class="payment-methods">
                 <div class="payment-method" onclick="selectPayment('sbp', this)">
                     <div class="payment-method-header">
@@ -998,6 +1001,63 @@
         let cart = [];
         let currentLanguage = 'ru';
         let timerIntervals = {};
+        let currentProductId = null;
+
+        const products = {
+            1: {
+                id: 1,
+                nameRu: 'Зип-худи STAR',
+                nameEn: 'STAR Zip Hoodie',
+                price: '3 690 ₽',
+                priceUsd: '49.99 $',
+                image1: 'https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg',
+                image2: 'https://i.postimg.cc/pTsLbg2C/photo-2025-12-22-00-52-07.jpg',
+                descriptionRu: 'Тёплое худи оверсайз с капюшоном — идеальный выбор для комфортных повседневных образов. Эта трикотажная толстовка из хлопка создана для тех, кто ценит качество и уют. Мягкий начёс внутри делает модель особенно тёплой и приятной к телу, а спущенные рукава добавляют современный стиль и расслабленный силуэт. Худи оснащено удобными карманами, что делает его не только стильным, но и практичным.',
+                descriptionEn: 'Warm oversized hoodie with a hood — the perfect choice for comfortable everyday looks. This cotton knitwear sweatshirt is created for those who value quality and comfort. The soft fleece inside makes the model especially warm and pleasant to the body, while dropped sleeves add a modern style and relaxed silhouette.',
+                specs: [
+                    { labelRu: 'Состав', labelEn: 'Material', valueRu: 'хлопок', valueEn: 'cotton' },
+                    { labelRu: 'Цвет', labelEn: 'Color', valueRu: 'черный', valueEn: 'black' },
+                    { labelRu: 'Пол', labelEn: 'Gender', valueRu: 'Мужской', valueEn: 'Male' },
+                    { labelRu: 'Размер на модели', labelEn: 'Model size', valueRu: 'L', valueEn: 'L' },
+                    { labelRu: 'Рост модели на фото', labelEn: 'Model height', valueRu: '188 см', valueEn: '188 cm' },
+                    { labelRu: 'Утеплитель', labelEn: 'Insulation', valueRu: 'флис', valueEn: 'fleece' },
+                    { labelRu: 'Покрой', labelEn: 'Fit', valueRu: 'оверсайз', valueEn: 'oversized' },
+                    { labelRu: 'Тип карманов', labelEn: 'Pocket type', valueRu: 'кенгуру', valueEn: 'kangaroo' },
+                    { labelRu: 'Особенности модели', labelEn: 'Features', valueRu: 'с начесом', valueEn: 'with fleece' },
+                    { labelRu: 'Фактура материала', labelEn: 'Texture', valueRu: 'трикотаж', valueEn: 'knitwear' },
+                    { labelRu: 'Уход за вещами', labelEn: 'Care', valueRu: 'деликатная стирка; стирка при t не более 30°С', valueEn: 'delicate wash' },
+                    { labelRu: 'Комплектация', labelEn: 'Package', valueRu: 'худи оверсайз 1 шт', valueEn: 'oversized hoodie 1 pc' },
+                    { labelRu: 'Страна производства', labelEn: 'Country', valueRu: 'Россия', valueEn: 'Russia' }
+                ]
+            },
+            2: {
+                id: 2,
+                nameRu: 'Зип-худи USSR',
+                nameEn: 'USSR Zip Hoodie',
+                price: '5 500 ₽',
+                priceUsd: '74.99 $',
+                image1: 'https://i.postimg.cc/K8Yw5znS/fgddfgv.jpg',
+                image2: 'https://i.postimg.cc/zv5PHXJP/uayvm.jpg',
+                descriptionRu: 'Стильный зип-худи USSR с укороченным покроем — идеальный выбор для создания модных городских образов. Эта модель выполнена из качественного материала с оптимальным соотношением хлопка и полиэстера, что обеспечивает комфорт и долговечность. Худи на молнии с капюшоном отлично подходит для межсезонья и прохладных дней. Накладные карманы добавляют практичности, а унисекс дизайн делает модель универсальной.',
+                descriptionEn: 'Stylish USSR zip hoodie with a shortened cut — the perfect choice for creating fashionable urban looks. This model is made of quality material with an optimal ratio of cotton and polyester, which provides comfort and durability. The zip hoodie with hood is perfect for the off-season and cool days.',
+                specs: [
+                    { labelRu: 'Состав', labelEn: 'Material', valueRu: 'Хлопок-65%; Полиэстер-35%', valueEn: 'Cotton-65%; Polyester-35%' },
+                    { labelRu: 'Цвет', labelEn: 'Color', valueRu: 'черный; глубокий черный', valueEn: 'black; deep black' },
+                    { labelRu: 'Пол', labelEn: 'Gender', valueRu: 'Мужской', valueEn: 'Male' },
+                    { labelRu: 'Размер на модели', labelEn: 'Model size', valueRu: '52', valueEn: '52' },
+                    { labelRu: 'Рост модели на фото', labelEn: 'Model height', valueRu: '179 см', valueEn: '179 cm' },
+                    { labelRu: 'Утеплитель', labelEn: 'Insulation', valueRu: 'без утеплителя', valueEn: 'without insulation' },
+                    { labelRu: 'Покрой', labelEn: 'Fit', valueRu: 'укороченный', valueEn: 'shortened' },
+                    { labelRu: 'Тип карманов', labelEn: 'Pocket type', valueRu: 'накладные', valueEn: 'patch' },
+                    { labelRu: 'Декоративные элементы', labelEn: 'Decorative', valueRu: 'молния; капюшон', valueEn: 'zipper; hood' },
+                    { labelRu: 'Особенности модели', labelEn: 'Features', valueRu: 'унисекс; без начеса', valueEn: 'unisex; without fleece' },
+                    { labelRu: 'Фактура материала', labelEn: 'Texture', valueRu: 'плотная', valueEn: 'dense' },
+                    { labelRu: 'Уход за вещами', labelEn: 'Care', valueRu: 'деликатная стирка', valueEn: 'delicate wash' },
+                    { labelRu: 'Комплектация', labelEn: 'Package', valueRu: 'Худи на молнии - 1шт.', valueEn: 'Zip hoodie - 1 pc.' },
+                    { labelRu: 'Страна производства', labelEn: 'Country', valueRu: 'Россия', valueEn: 'Russia' }
+                ]
+            }
+        };
 
         const translations = {
             ru: {
@@ -1050,7 +1110,33 @@
             document.getElementById('cartCount').textContent = cart.length;
         }
 
-        function openProductDetail() {
+        function openProductDetail(productId) {
+            currentProductId = productId;
+            const prod = products[productId];
+
+            document.getElementById('mainImage').src = prod.image1;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.thumbnail')[0].src = prod.image1;
+            document.querySelectorAll('.thumbnail')[1].src = prod.image2;
+            document.querySelectorAll('.thumbnail')[0].classList.add('active');
+
+            const titleElem = document.querySelector('.detail-title');
+            titleElem.textContent = currentLanguage === 'ru' ? prod.nameRu : prod.nameEn;
+
+            document.querySelectorAll('.detail-price .price-rub')[0].textContent = prod.price;
+            document.querySelectorAll('.detail-price .price-usd')[0].textContent = prod.priceUsd;
+
+            const descText = document.querySelector('.description-text');
+            descText.textContent = currentLanguage === 'ru' ? prod.descriptionRu : prod.descriptionEn;
+
+            const specsList = document.querySelectorAll('.spec-row');
+            specsList.forEach((row, i) => {
+                if (prod.specs[i]) {
+                    row.querySelectorAll('.spec-label')[0].textContent = currentLanguage === 'ru' ? prod.specs[i].labelRu : prod.specs[i].labelEn;
+                    row.querySelectorAll('.spec-value')[0].textContent = currentLanguage === 'ru' ? prod.specs[i].valueRu : prod.specs[i].valueEn;
+                }
+            });
+
             document.getElementById('productModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -1067,12 +1153,13 @@
         }
 
         function addToCart() {
+            const prod = products[currentProductId];
             const product = {
-                id: 1,
-                name: currentLanguage === 'ru' ? 'Зип-худи STAR' : 'STAR Zip Hoodie',
-                price: '3 690 ₽',
-                priceUsd: '49.99 $',
-                image: 'https://i.postimg.cc/C565D9XN/photo-2025-12-22-00-50-08.jpg'
+                id: prod.id,
+                name: currentLanguage === 'ru' ? prod.nameRu : prod.nameEn,
+                price: prod.price,
+                priceUsd: prod.priceUsd,
+                image: prod.image1
             };
 
             const existingProduct = cart.find(item => item.id === product.id);
@@ -1113,10 +1200,11 @@
                 const deliveryText = currentLanguage === 'ru' ? 'Срок доставки: приблизительно 14 дней' : 'Delivery time: approximately 14 days';
                 const checkoutText = currentLanguage === 'ru' ? 'Оформить заказ' : 'Checkout';
 
+                const totalPrice = cart.length > 0 ? cart[0].price : '0 ₽';
                 html += `
                     <div class="cart-total">
                         <span>${totalText}</span>
-                        <span class="price-rub">3 690 ₽</span>
+                        <span class="price-rub">${totalPrice}</span>
                     </div>
                     <div class="delivery-info" style="margin-bottom: 20px;">
                         ${deliveryText}
@@ -1155,7 +1243,6 @@
                     clearInterval(timerIntervals[key]);
                 }
             });
-
             timerIntervals = {};
 
             document.querySelectorAll('.timer-text').forEach(timer => {
@@ -1186,7 +1273,6 @@
             document.querySelectorAll('.payment-method').forEach(m => {
                 m.classList.remove('selected');
             });
-
             element.classList.add('selected');
 
             const timerText = element.querySelector('.timer-text');
@@ -1223,7 +1309,6 @@
 
         function processContinue(method, event) {
             event.stopPropagation();
-
             if (method === 'crypto') {
                 window.open('https://t.me/send?start=IVlDWy2EgSdf', '_blank');
                 setTimeout(() => {
